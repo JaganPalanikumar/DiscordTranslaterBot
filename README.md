@@ -1,4 +1,4 @@
-# TranslaterDiscordBot
+# DiscordTranslaaterBot
 
 This discord bot uses Google Translate to translate text from any language to any other language, such as Spanish to English! Currently supports 107 languages. 
 
