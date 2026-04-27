@@ -1,3 +1,4 @@
+# Parses translation commands and returns help text, language lists, or translated messages.
 import googletrans
 import LangCodes
 from googletrans import Translator

@@ -1,3 +1,4 @@
+# Maps language codes (like 'en') to full language names used by the translator.
 CodeDict = {
     'af': 'afrikaans',
     'sq': 'albanian',
