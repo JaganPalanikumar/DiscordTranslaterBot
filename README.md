@@ -5,7 +5,7 @@ This discord bot uses Google Translate to translate text from any language to an
 HOW TO INSTALL:
 1. Create a Discord Bot for free using the Discord Developer Platform and invite it to any server
 2. Install all Python files into a folder and open it using any Python IDE
-3. Enter your Discord Bot's API Token code needed to access the bot into the variable titled `secretToken` in the run_discord_bot() function in bot.py
+3. Enter your Discord Bot's API Token code needed to access the bot into the variable titled `secretToken` in .env 
 4. Run main.py and your bot should appear online in all servers it has been invited to as long as the code is running 
 
 HOW TO USE:
