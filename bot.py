@@ -27,10 +27,11 @@ def run_discord_bot():
     if not secretToken:
         raise ValueError("DISCORD_BOT_TOKEN is missing. Add it to your .env file.")
 
-    intents = discord.Intents.default()
-    intents.message_content = True
-    client = discord.Client(intents=intents)
-    tree = app_commands.CommandTree(client)
+    #TODO - 1 (Setting up Bot)
+    intents = discord.Intents.default() #define default set of discord events bot can listen to
+    intents.message_content = True #lets bot read text content of messages (not inculded default)
+    client = discord.Client(intents=intents) #creates client (bot object that connects to discord), tells it which events it can recieve
+    tree = app_commands.CommandTree(client) #slash command manager, helps define slash commands
 
     @tree.command(name="thelp", description="Show translation bot help.")
     async def thelp_command(interaction: discord.Interaction):
@@ -42,6 +43,7 @@ def run_discord_bot():
 
     @tree.command(name="translate", description="Translate text to a target language.")
     @app_commands.describe(text="Text to translate", language="Target language (optional)")
+    #TODO - 2 (Translate Slash Command)
     async def translate_command(
         interaction: discord.Interaction,
         text: str,
@@ -65,16 +67,16 @@ def run_discord_bot():
 
         print(f'{client.user} is now running!')
 
-    @client.event
-    # Handle every new message, ignoring the bot's own messages to prevent loops.
-    async def on_message(message):
-        if message.author == client.user:
+    # TODO - 3 (Handle every new message, ignoring the bot's own messages to prevent loops.)
+    @client.event #registers function as a discord event handler 
+    async def on_message(message): #built in discord event name
+        if message.author == client.user: #if the message was sent by the bot, ignore
             return
 
-        try:
+        try: #try to call translate function, if not raise error
             response = responses.translate(str(message.content))
             await message.reply(response)
         except Exception as e:
             print(e)
 
-    client.run(secretToken)
+    client.run(secretToken) #TODO - 4 (runs bot using secret token)
